@@ -4,4 +4,3 @@
 git clone https://github.com/rafael-g-depaulo/setup-linux.git ~/setup 
 cd ~/setup
 sudo -u $USER bash -c "$(cat ./main.sh)"
-
