@@ -1,9 +1,9 @@
 # configure stuff
 
 # git and gitflow (now using hubflow instead)
-git config --global user.name "$NAME"
-git config --global user.email "$EMAIL"
-git config --global core.editor "$GIT_EDITOR"
+git config --global user.name "$VAR_NAME"
+git config --global user.email "$VAR_EMAIL"
+git config --global core.editor "$VAR_GIT_EDITOR"
 # Alias for existing commands
 git config --global alias.co checkout
 git config --global alias.st status
@@ -32,7 +32,7 @@ ssh-keyscan github.com >> ~/.ssh/known_hosts
 isWindows && cp -r /mnt/c/Users/${USER}/.ssh ~/.
 sudo chmod 700 -R ~/.ssh
 SSH_KEY_ALG=ed25519
-ssh-keygen -q -t $SSH_KEY_ALG -C "$EMAIL" -f "$HOME/.ssh/id_$SSH_KEY_ALG" -P "" <<< n &> /dev/null
+ssh-keygen -q -t $SSH_KEY_ALG -C "$VAR_EMAIL" -f "$HOME/.ssh/id_$SSH_KEY_ALG" -P "" <<< n &> /dev/null
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_$SSH_KEY_ALG
 

@@ -26,7 +26,7 @@ source /home/$USER/.yvm/yvm.sh
 sudo apt-get install -y postgresql postgresql-contrib libpq-dev
 sudo service postgresql start
 sudo -u postgres psql -c "
-  CREATE USER $USER WITH PASSWORD '$USER_PWD)';
+  CREATE USER $USER WITH PASSWORD '$VAR_USER_PWD)';
   ALTER USER $USER WITH SUPERUSER;
 "
 sudo systemctl enable postgresql
@@ -84,4 +84,7 @@ git clone https://www.github.com/rafael-g-depaulo/nvim-config.git ~/.config/nvim
 # install packer (nvim packet manager)
 git clone --depth 1 https://github.com/wbthomason/packer.nvim \
   ~/.local/share/nvim/site/pack/packer/start/packer.nvim <<<yes &> /dev/null
+
+# jq is a nice tool to manipulate json strings in terminal (useful for curl'ing apis)
+sudo apt-get install jq
 

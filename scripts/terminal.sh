@@ -1,12 +1,13 @@
 #!/bin/bash
 
-function addComment() {
-  TAG="$2"
-  sed -i "s|\(\s*\)\(.*\)$TAG|\1// \2$TAG|g" $1
-}
-function removeComment() {
-  TAG="$2"
-  sed -i "s|\(\s*\)// \(.*\)$TAG| \1\2$TAG|g" $1
+function setupFile() {
+  TAG_COMMENT="$2"
+  TAG_UNCOMMENT="$3"
+
+  # comment out all lines with TAG_COMMENT
+  sed -i "s|\(\s*\)\(.*\)$TAG_COMMENT|\1// \2$TAG_COMMENT|g" $1
+  # uncomment out all commented lines with TAG_UNCOMMENT
+  sed -i "s|\(\s*\)// \(.*\)$TAG_UNCOMMENT| \1\2$TAG_UNCOMMENT|g" $1
 }
 
 WSL_TAG="// WSL ONLY"
@@ -18,14 +19,14 @@ getgist rafael-g-depaulo .hyper.js <<<y &> /dev/null
 
 # if in windows, just update the hyper.js
 if isWindows; then
-  removeComment .hyper.js $WSL_TAG # uncomment all WSL specific config 
-  addComment .hyper.js $LINUX_TAG # comment out all native linux specific config
+  setupFile .hyper.js $LINUX_TAG $WSL_TAG
 
   # TODO: send .hyper.js to windows folder
+
 else
   sudo apt-get install -y hyper
-  removeComment .hyper.js $LINUX_TAG # uncomment all native linux specific config 
-  addComment .hyper.js $WSL_TAG # comment out all WSL specific config
+
+  setupFile .hyper.js $WSL_TAG $LINUX_TAG 
 
   # set up hyper as default terminal
   sudo update-alternatives --set x-terminal-emulator $(which hyper)

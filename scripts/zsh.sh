@@ -13,3 +13,4 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 # make zsh default shell
 chsh -s $(which zsh)
 zsh
+
