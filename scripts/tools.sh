@@ -70,7 +70,7 @@ sudo apt-get install autojump -y
 sudo apt-get install -y libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb
 
 # utils
-sudo apt-get install -y make xclip vim 
+sudo apt-get install -y make xclip vim tree fzf
 pip install getgist
 export PATH="$PATH:$HOME/.local/bin"
 
