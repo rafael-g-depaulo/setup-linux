@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # download and install nerd font for fira code (with ligatures)
 
 FONT_NAME="FiraCode"

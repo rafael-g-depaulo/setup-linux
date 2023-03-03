@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # configure stuff
 
 # git and gitflow (now using hubflow instead)

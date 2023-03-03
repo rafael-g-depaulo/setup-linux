@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # install cli utility tools
 
 # utils

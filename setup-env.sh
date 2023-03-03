@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # setup link? https://medium.com/@gusflopes86/ambiente-de-desenvolvimento-react-e-react-native-no-windows-com-wsl-f505906d636c
 
 # THIS FIXES IT????????

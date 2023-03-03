@@ -22,7 +22,6 @@ if isWindows; then
   setupFile .hyper.js $LINUX_TAG $WSL_TAG
 
   # TODO: send .hyper.js to windows folder
-
 else
   sudo apt-get install -y hyper
 

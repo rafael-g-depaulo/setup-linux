@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # This file sets up the variables used elsewhere
 
 # VARS
