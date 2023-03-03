@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# heroku cli (recommend to keep this at the stop since it's the only one that prompts a password)
-curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
+# heroku cli
+curl https://cli-assets.heroku.com/install-ubuntu.sh | sudo sh
 
 sudo apt-get update -y
 
@@ -36,6 +36,23 @@ sudo systemctl enable postgresql
 #  CREATE DATABASE \"plural\";
 # "
 
+# docker & docker compose
+sudo apt-get install -y curl gnup ca-certificate lsb-release
+### Download the docker gpg file to Ubuntu
+sudo mkdir -p /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+### Add Docker and docker compose support to the Ubuntu's packages list
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-pluginsudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-pluginlinux/ubuntu   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update -y
+
+### Install docker and docker compose on Ubuntu
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+
+### grant docker user root permissions to run docker without sudo
+sudo groupadd docker
+sudo usermod -aG docker $USER
+newgrp docker # activate the changes without needing to log out
+
 # yarn
 # curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 # echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
@@ -46,33 +63,17 @@ sudo systemctl enable postgresql
 # yarn packages
 # yarn global add create-react-app @storybook/cli nodemon @babel/cli sequelize-cli pg serve cypress typeorm lerna
 
-# Github cli
-type -p curl >/dev/null || sudo apt install curl -y
-curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
-  && sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg \
-  && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
-  && sudo apt update -y \
-  && sudo apt install gh -y
-
 # hubflow
 git clone http://www.github.com/datasift/gitflow.git /tmp/hubflow
 cd /tmp/hubflow
 sudo ./install.sh
 cd
 
-# python basics
-sudo apt-get install -y python-is-python3 pip
-
 # autojump
 sudo apt-get install autojump -y
 
 # cypress
 sudo apt-get install -y libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb
-
-# utils
-sudo apt-get install -y make xclip vim tree fzf
-pip install getgist
-export PATH="$PATH:$HOME/.local/bin"
 
 # neovim
 sudo apt-get remove -y neovim
@@ -84,7 +85,4 @@ git clone https://www.github.com/rafael-g-depaulo/nvim-config.git ~/.config/nvim
 # install packer (nvim packet manager)
 git clone --depth 1 https://github.com/wbthomason/packer.nvim \
   ~/.local/share/nvim/site/pack/packer/start/packer.nvim <<<yes &> /dev/null
-
-# jq is a nice tool to manipulate json strings in terminal (useful for curl'ing apis)
-sudo apt-get install jq
 
