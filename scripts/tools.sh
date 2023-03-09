@@ -1,5 +1,8 @@
 #!/bin/bash
 
+sudo apt-get update -y
+sudo apt-get upgrade -y
+
 # heroku cli
 curl https://cli-assets.heroku.com/install-ubuntu.sh | sudo sh
 
@@ -37,21 +40,21 @@ sudo systemctl enable postgresql
 # "
 
 # docker & docker compose
-sudo apt-get install -y curl gnup ca-certificate lsb-release
+# sudo apt-get install -y curl gnup ca-certificate lsb-release
 ### Download the docker gpg file to Ubuntu
-sudo mkdir -p /etc/apt/keyrings
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+# sudo mkdir -p /etc/apt/keyrings
+# curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
 ### Add Docker and docker compose support to the Ubuntu's packages list
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-pluginsudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-pluginlinux/ubuntu   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-sudo apt-get update -y
+# echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-pluginsudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-pluginlinux/ubuntu   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+# sudo apt-get update -y
 
 ### Install docker and docker compose on Ubuntu
-sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+# sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
 
 ### grant docker user root permissions to run docker without sudo
-sudo groupadd docker
-sudo usermod -aG docker $USER
-newgrp docker # activate the changes without needing to log out
+# sudo groupadd docker
+# sudo usermod -aG docker $USER
+# newgrp docker # activate the changes without needing to log out
 
 # yarn
 # curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -

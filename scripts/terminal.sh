@@ -23,8 +23,10 @@ if isWindows; then
 
   # TODO: send .hyper.js to windows folder
 else
-  # cd ~/Downloads && wget -O hyper_terminal.deb https://releases.hyper.is/download/deb # this doesnt need the correct apt repo and shit
-  sudo apt-get install -y hyper
+  cd ~/Downloads && wget -O hyper_terminal.deb https://releases.hyper.is/download/deb # this doesnt need the correct apt repo and shit
+  sudo chown _apt ./hyper_terminal.deb
+  sudo apt install -y ./hyper_terminal.deb
+  # sudo apt-get install -y hyper
 
   setupFile .hyper.js $WSL_TAG $LINUX_TAG 
 
