@@ -4,7 +4,7 @@
 # setup if using a naked ubuntu
 sudo apt update -y
 sudo apt install -y git
-mkdir -p ~/.ssh/known_hosts
+mkdir -p ~/.ssh
 ssh-keyscan github.com >> ~/.ssh/known_hosts
 
 # clone and run scripts
