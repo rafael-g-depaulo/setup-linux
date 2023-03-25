@@ -7,7 +7,7 @@ source ./scripts/setup_vars.sh
 source ./scripts/custom_commands.sh
 
 # install tools and cli stuff
-# source ./scripts/tools.sh
+source ./scripts/tools.sh
 
 # setup terminal emulator
 # source ./scripts/terminal.sh
