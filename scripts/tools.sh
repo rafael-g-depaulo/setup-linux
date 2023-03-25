@@ -85,6 +85,10 @@ sudo apt-get update -y
 sudo apt-get install -y neovim
 # clone my nvim config
 git clone https://www.github.com/rafael-g-depaulo/nvim-config.git ~/.config/nvim
+if [ "$VAR_IS_RAGAN" == "true" ]; then 
+  changeHttpsOriginToSsh ~/.config/nvim
+fi
+
 # install packer (nvim packet manager)
 git clone --depth 1 https://github.com/wbthomason/packer.nvim \
   ~/.local/share/nvim/site/pack/packer/start/packer.nvim <<<yes &> /dev/null

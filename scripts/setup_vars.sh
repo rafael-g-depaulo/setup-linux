@@ -90,4 +90,3 @@ fi
 
 export VAR_GIT_EDITOR=$(get_var GIT_EDITOR "code --wait" || option_prompt "Git default editor" "code --wait|code-insiders --wait|nvim|vim|nano" "|")
 
-echo "setup email is $VAR_EMAIL"

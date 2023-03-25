@@ -6,7 +6,10 @@ source ./scripts/setup_vars.sh
 # setup custom commands
 source ./scripts/custom_commands.sh
 
-# install tools and cli stuff
+# cli utils
+source ./scripts/cli_utils.sh
+
+# install tools
 source ./scripts/tools.sh
 
 # setup terminal emulator

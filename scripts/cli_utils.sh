@@ -3,7 +3,7 @@
 # install cli utility tools
 
 # utils
-sudo apt-get install -y make xclip vim tree fzf
+sudo apt-get install -y make xclip vim tree fzf curl
 
 # python basics
 sudo apt-get install -y python-is-python3 pip
