@@ -16,26 +16,25 @@ bool_var() {
 }
 
 prompt() {
-  local COLORS='
-  window=,red
-  border=white,red
-  textbox=white,red
-  button=black,white
-  root=black,brightblue'
+  # local COLORS='
+  # window=,red
+  # border=white,red
+  # textbox=white,red
+  # button=black,white
+  # root=black,brightblue'
 
-  local dialog_command=dialog
-  local BOXTYPE="$1"
-  local DESCRIPTION="$2"
-  local REST_ARGS="${@:3}"
-  local ARGS="--clear --output-fd 1 $REST_ARGS --$BOXTYPE"
+  # local dialog_command=whiptail
+  # local BOXTYPE="$1"
+  # local DESCRIPTION="$2"
+  # local REST_ARGS="${@:3}"
+  # local BASE_ARGS="--clear"
 
-  NEWT_COLORS="$COLORS" 
-  COMMAND="$dialog_command $ARGS \"$DESCRIPTION\" 0 0" #3>&1 1>&2 2>&3 3>&-
+  # local COMMAND="$dialog_command $BASE_ARGS --$BOXTYPE \"$DESCRIPTION\" 0 0 3>&1 1>&2 2>&3 3>&-"
+  # $dialog_command $BASE_ARGS --$BOXTYPE \"$DESCRIPTION\" 0 0 3>&1 1>&2 2>&3 3>&-
 
-  echo "CMD: |$COMMAND|"
-
-  $COMMAND
-
+  DESCRIPTION="$1"
+  COMMAND=""
+  echo "$(echo "" | fzf --print-query --no-info --layout=reverse --prompt="$DESCRIPTION: ")"
 }
 
 # check if using non-interactive mode
@@ -43,7 +42,7 @@ export VAR_IS_INTERACTIVE="$(bool_var INTERACTIVE true)"
 
 get_var() {
   local varname=$1
-  local var=${!varname}
+  local var=$(eval echo \$$varname)
   local default=$2
 
   if [ -n "$var" ]; then
@@ -55,16 +54,8 @@ get_var() {
   fi
 }
 
-A=`get_var EMAIL "rafael.g.depaulo@gmail.com" || prompt inputbox "Email" --title "setup-linux"`
-B=`get_var PASSWORD || prompt passwordbox "Password (used for postgres user)" --title "setup-linux"`
-
-echo "A: $A"
-echo "B: $B"
-
-# get_var TEST
-
-# export TEST=`prompt inputbox "Nome" --title "setup-linux"`
-# echo "entrou |$TEST|"
+A=$(get_var EMAIL "rafael.g.depaulo@gmail.com" || prompt "Email")
+B=$(get_var 'PASSWORD' || prompt 'Password for postgres user')
 
 # VARS
 export VAR_USER_PWD="${PASSWORD:-password_here}"
