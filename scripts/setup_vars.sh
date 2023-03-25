@@ -1,5 +1,7 @@
 #!/bin/bash
 
+sudo apt install fzf
+
 # This file sets up the variables used elsewhere
 bool_var() {
   local VARIABLE_NAME="$1"
@@ -58,7 +60,7 @@ export VAR_IS_INTERACTIVE="$(bool_var INTERACTIVE true)"
 
 get_var() {
   local varname=$1
-  local var=$(eval echo \$$varname)
+  local var=${!varname}
   local default=$2
 
   if [ -n "$var" ]; then
