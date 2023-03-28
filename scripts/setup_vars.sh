@@ -96,3 +96,5 @@ fi
 
 export VAR_GIT_EDITOR=$(get_var GIT_EDITOR "code --wait" || option_prompt "Git default editor" "code --wait|code-insiders --wait|nvim|vim|nano" "|")
 
+export VAR_INSTALL_ZSH=$(get_var INSTALL_ZSH || yesno_prompt "Install zsh and set it as default shell?")
+
