@@ -1,8 +1,9 @@
 #!/bin/bash
 
+local SETUP_BASE="$(pwd)"
 run_script() {
   local SCRIPT_NAME="$1"
-  local SCRIPTS_FOLDER="$(pwd)/scripts"
+  local SCRIPTS_FOLDER="$SETUP_BASE/scripts"
 
   source "$SCRIPTS_FOLDER/$SCRIPT_NAME"
 }
