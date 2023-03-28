@@ -28,5 +28,5 @@ setupFile .hyper.js $WSL_TAG $LINUX_TAG
 # set up hyper as default terminal
 sudo update-alternatives --install $(which x-terminal-emulator) x-terminal-emulator $(which hyper) 0
 sudo update-alternatives --set x-terminal-emulator $(which hyper)
-sudo update-alternatives --config x-terminal-emulator
+echo | sudo update-alternatives --config x-terminal-emulator
 
