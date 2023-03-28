@@ -38,3 +38,6 @@ ssh-keygen -q -t $SSH_KEY_ALG -C "$VAR_EMAIL" -f "$HOME/.ssh/id_$SSH_KEY_ALG" -P
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_$SSH_KEY_ALG
 
+if [ $VAR_IS_RAGAN = "true" ]; then
+  addCronjob @reboot ~/commands/connectHeadset
+fi
