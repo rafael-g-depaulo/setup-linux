@@ -13,7 +13,9 @@ source ./scripts/cli_utils.sh
 source ./scripts/tools.sh
 
 # setup terminal emulator
-# source ./scripts/terminal.sh
+if [ $VAR_HAS_GUI = "true" ] && [ $VAR_INSTALL_HYPER = "true" ]; then
+  source ./scripts/terminal.sh
+fi
 
 # install zsh and oh-my-zsh
 # source ./scripts/zsh.sh

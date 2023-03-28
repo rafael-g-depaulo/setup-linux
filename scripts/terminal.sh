@@ -17,22 +17,16 @@ LINUX_TAG="// LINUX ONLY"
 cd
 getgist rafael-g-depaulo .hyper.js <<<y &> /dev/null
 
-# if in windows, just update the hyper.js
-if isWindows; then
-  setupFile .hyper.js $LINUX_TAG $WSL_TAG
+cd ~/Downloads && wget -O hyper_terminal.deb https://releases.hyper.is/download/deb # this doesnt need the correct apt repo and shit
+sudo chown _apt ./hyper_terminal.deb
+sudo apt install -y ./hyper_terminal.deb
+# sudo apt-get install -y hyper
+cd
 
-  # TODO: send .hyper.js to windows folder
-else
-  cd ~/Downloads && wget -O hyper_terminal.deb https://releases.hyper.is/download/deb # this doesnt need the correct apt repo and shit
-  sudo chown _apt ./hyper_terminal.deb
-  sudo apt install -y ./hyper_terminal.deb
-  # sudo apt-get install -y hyper
+setupFile .hyper.js $WSL_TAG $LINUX_TAG 
 
-  setupFile .hyper.js $WSL_TAG $LINUX_TAG 
-
-  # set up hyper as default terminal
-  sudo update-alternatives --install $(which x-terminal-emulator) x-terminal-emulator $(which hyper) 0
-  sudo update-alternatives --set x-terminal-emulator $(which hyper)
-  sudo update-alternatives --config x-terminal-emulator
-fi
+# set up hyper as default terminal
+sudo update-alternatives --install $(which x-terminal-emulator) x-terminal-emulator $(which hyper) 0
+sudo update-alternatives --set x-terminal-emulator $(which hyper)
+sudo update-alternatives --config x-terminal-emulator
 

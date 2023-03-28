@@ -83,10 +83,16 @@ if [ $VAR_IS_RAGAN = "true" ]; then
   export VAR_EMAIL="rafael.g.depaulo@gmail.com"
   export VAR_NAME="Rafael G. de Paulo"
 else
-  export VAR_USER_PWD=$(get_var PASSWORD || text_prompt)
+  export VAR_USER_PWD=$(get_var PASSWORD || text_prompt "Password for postgres user")
   export VAR_EMAIL=$(get_var EMAIL || text_prompt "Email")
   export VAR_NAME=$(get_var NAME || text_prompt "Nome")
 fi  
+
+export VAR_HAS_GUI=$(get_var GUI || yesno_prompt "Install GUI-relevant stuff? (not just CLI tools)")
+
+if [ $VAR_HAS_GUI = "true" ]; then
+  export VAR_INSTALL_HYPER=$(get_var INSTALL_HYPER || yesno_prompt "Install Hyper.js Terminal and use it as default terminal emulator?")
+fi
 
 export VAR_GIT_EDITOR=$(get_var GIT_EDITOR "code --wait" || option_prompt "Git default editor" "code --wait|code-insiders --wait|nvim|vim|nano" "|")
 
