@@ -9,6 +9,10 @@ run_script() {
   "$SCRIPTS_FOLDER/$SCRIPT_NAME"
 }
 
+# PATH CHANGES
+export PATH="$PATH:$HOME/.local/bin" # needed for getgist
+export PATH="$PATH:$HOME/commands"   # temporarily add commands to path
+
 # parse input and get vars
 source ./scripts/setup_vars.sh
 

@@ -10,7 +10,6 @@ sudo apt-get install -y python-is-python3 pip
 
 # getgist (util to download github gists)
 pip install getgist
-export PATH="$PATH:$HOME/.local/bin"
 
 # jq is a nice tool to manipulate json strings in terminal (useful for curl'ing apis)
 sudo apt-get install -y jq
