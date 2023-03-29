@@ -5,11 +5,12 @@ run_script() {
   local SCRIPT_NAME="$1"
   local SCRIPTS_FOLDER="$SETUP_BASE/scripts"
 
-  source "$SCRIPTS_FOLDER/$SCRIPT_NAME"
+  # run script
+  "$SCRIPTS_FOLDER/$SCRIPT_NAME"
 }
 
 # parse input and get vars
-run_script "setup_vars.sh"
+source ./scripts/setup_vars.sh
 
 # setup custom commands
 run_script "custom_commands.sh"
