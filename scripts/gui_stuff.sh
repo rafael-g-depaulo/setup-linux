@@ -35,3 +35,8 @@ sudo apt-get install chrome-gnome-shell
 
 # gui volume mixer
 # sudo apt install -y qasmixer
+
+# TODO: obsidian
+# TODO: beekeeper
+# TODO: stremio
+
