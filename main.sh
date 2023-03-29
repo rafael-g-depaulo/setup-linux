@@ -6,7 +6,7 @@ run_script() {
   local SCRIPTS_FOLDER="$SETUP_BASE/scripts"
 
   # run script
-  "$SCRIPTS_FOLDER/$SCRIPT_NAME"
+  sudo "$SCRIPTS_FOLDER/$SCRIPT_NAME"
 }
 
 # PATH CHANGES
