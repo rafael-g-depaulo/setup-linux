@@ -13,16 +13,12 @@ function setupFile() {
 WSL_TAG="// WSL ONLY"
 LINUX_TAG="// LINUX ONLY"
 
-# get .hyper.js
-cd
-getgist rafael-g-depaulo .hyper.js <<<y &> /dev/null
-
 cd ~/Downloads && wget -O hyper_terminal.deb https://releases.hyper.is/download/deb # this doesnt need the correct apt repo and shit
 sudo chown _apt ./hyper_terminal.deb
 sudo apt install -y ./hyper_terminal.deb
 # sudo apt-get install -y hyper
-cd
 
+cd
 setupFile .hyper.js $WSL_TAG $LINUX_TAG 
 
 # set up hyper as default terminal

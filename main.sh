@@ -22,6 +22,9 @@ run_script "custom_commands.sh"
 # cli utils
 run_script "cli_utils.sh"
 
+# get my dotfiles for general config
+run_script "dotfiles.sh"
+
 # setup general config stuff
 run_script "config.sh"
 
