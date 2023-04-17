@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# TODO: add rvm/ruby/tmuxinator to tools.sh
+
 SETUP_BASE="$(pwd)"
 run_script() {
   local SCRIPT_NAME="$1"
