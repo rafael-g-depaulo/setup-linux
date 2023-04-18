@@ -25,6 +25,10 @@ nvm use default
 curl -s https://raw.githubusercontent.com/tophat/yvm/master/scripts/install.js | node
 source /home/$USER/.yvm/yvm.sh
 
+# rvm
+sudo apt update
+sudo apt install -y ruby
+
 # postgres setup
 sudo apt-get install -y postgresql postgresql-contrib libpq-dev
 sudo service postgresql start
@@ -92,4 +96,8 @@ fi
 # install packer (nvim packet manager)
 git clone --depth 1 https://github.com/wbthomason/packer.nvim \
   ~/.local/share/nvim/site/pack/packer/start/packer.nvim <<<yes &> /dev/null
+
+# tmux/tmuxinator
+sudo apt install -y tmux
+sudo gem install tmuxinator
 
