@@ -11,14 +11,15 @@ sudo apt-get update -y
 # nvm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 echo "# $NVM_DIR/default-packages                                           
-yarn" > $NVM_DIR/default-packages
-nvm install 18
+yarn" >$NVM_DIR/default-packages
+NODE_DEFAULT_VERSION=20
+nvm install $NODE_DEFAULT_VERSION
 # nvm install lts/fermium # v12.16
 # nvm alias default lts/fermium # v12.16
-nvm alias default 18
+nvm alias default $NODE_DEFAULT_VERSION
 nvm use default
 
 # yvm setup
@@ -89,15 +90,14 @@ sudo apt-get update -y
 sudo apt-get install -y neovim
 # clone my nvim config
 git clone https://www.github.com/rafael-g-depaulo/nvim-config.git ~/.config/nvim
-if [ "$VAR_IS_RAGAN" == "true" ]; then 
-  changeHttpsOriginToSsh ~/.config/nvim
+if [ "$VAR_IS_RAGAN" == "true" ]; then
+	changeHttpsOriginToSsh ~/.config/nvim
 fi
 
 # install packer (nvim packet manager)
 git clone --depth 1 https://github.com/wbthomason/packer.nvim \
-  ~/.local/share/nvim/site/pack/packer/start/packer.nvim <<<yes &> /dev/null
+	~/.local/share/nvim/site/pack/packer/start/packer.nvim <<<yes &>/dev/null
 
 # tmux/tmuxinator
 sudo apt install -y tmux
 sudo gem install tmuxinator
-
