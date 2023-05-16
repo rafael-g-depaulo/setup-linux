@@ -25,10 +25,10 @@ sudo apt-get update -y
 # nvm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 echo "# $NVM_DIR/default-packages                                           
-yarn" > $NVM_DIR/default-packages
+yarn" >$NVM_DIR/default-packages
 nvm install 18
 # nvm install lts/fermium # v12.16
 # nvm alias default lts/fermium # v12.16
@@ -71,7 +71,7 @@ sudo systemctl enable postgresql
 cp -r /mnt/c/Users/${USER}/.ssh ~/.
 sudo chmod 700 -R ~/.ssh
 SSH_KEY_ALG=ed25519
-ssh-keygen -q -t $SSH_KEY_ALG -C "$EMAIL" -f "$HOME/.ssh/id_$SSH_KEY_ALG" -P "" <<< n &> /dev/null
+ssh-keygen -q -t $SSH_KEY_ALG -C "$EMAIL" -f "$HOME/.ssh/id_$SSH_KEY_ALG" -P "" <<<n &>/dev/null
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_$SSH_KEY_ALG
 
@@ -96,7 +96,7 @@ git config --global init.defaultBranch main
 
 # add github to known hosts (this saves a confirmation later)
 mkdir ~/.ssh
-ssh-keyscan github.com >> ~/.ssh/known_hosts
+ssh-keyscan github.com >>~/.ssh/known_hosts
 
 # idk if i want this yet
 # # Do not fast-forward when merging
@@ -105,11 +105,11 @@ ssh-keyscan github.com >> ~/.ssh/known_hosts
 
 # Github cli
 type -p curl >/dev/null || sudo apt install curl -y
-curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
-  && sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg \
-  && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
-  && sudo apt update -y \
-  && sudo apt install gh -y
+curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg &&
+	sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg &&
+	echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list >/dev/null &&
+	sudo apt update -y &&
+	sudo apt install gh -y
 
 # hubflow
 git clone http://www.github.com/datasift/gitflow.git /tmp/hubflow
@@ -126,6 +126,8 @@ cd
 # python basics
 sudo apt-get install -y python-is-python3 pip
 
+pip install Pygments # colorize code and stuff
+
 # autojump
 sudo apt-get install autojump -y
 
@@ -133,33 +135,33 @@ sudo apt-get install autojump -y
 sudo apt-get install -y libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb
 
 # utils
-sudo apt-get install -y make xclip vim 
+sudo apt-get install -y make xclip vim
 pip install getgist
 export PATH="$PATH:$HOME/.local/bin"
 
 # clone my personal commands
-git clone git@github.com:rafael-g-depaulo/bash-commands.git ~/commands <<<yes &> /dev/null
+git clone git@github.com:rafael-g-depaulo/bash-commands.git ~/commands <<<yes &>/dev/null
 export PATH="$PATH:$HOME/commands" # temporarily add commands to path
 
 # hyper terminal
 sudo apt-get install -y hyper
 mkdir -p ~/.config/Hyper
 cd ~/.config/Hyper
-getgist rafael-g-depaulo .hyper.js <<<n &> /dev/null
+getgist rafael-g-depaulo .hyper.js <<<n &>/dev/null
 function addComment() {
-  TAG="$2"
-  sed -i "s|\(\s*\)\(.*\)$TAG|\1// \2$TAG|g" $1
+	TAG="$2"
+	sed -i "s|\(\s*\)\(.*\)$TAG|\1// \2$TAG|g" $1
 }
 function removeComment() {
-  TAG="$2"
-  sed -i "s|\(\s*\)// \(.*\)$TAG| \1\2$TAG|g" $1
+	TAG="$2"
+	sed -i "s|\(\s*\)// \(.*\)$TAG| \1\2$TAG|g" $1
 }
 if isWindows; then
-  removeComment .hyper.js "// WSL ONLY" # uncomment all WSL specific config 
-  addComment .hyper.js "// LINUX ONLY" # comment out all native linux specific config
+	removeComment .hyper.js "// WSL ONLY" # uncomment all WSL specific config
+	addComment .hyper.js "// LINUX ONLY"  # comment out all native linux specific config
 else
-  removeComment .hyper.js "// LINUX ONLY" # uncomment all native linux specific config 
-  addComment .hyper.js "// WSL ONLY" # comment out all WSL specific config
+	removeComment .hyper.js "// LINUX ONLY" # uncomment all native linux specific config
+	addComment .hyper.js "// WSL ONLY"      # comment out all WSL specific config
 fi
 
 # neovim
@@ -171,19 +173,19 @@ sudo apt-get install -y neovim
 git clone https://www.github.com/rafael-g-depaulo/nvim-config.git ~/.config/nvim
 # install packer (nvim packet manager)
 git clone --depth 1 https://github.com/wbthomason/packer.nvim \
-  ~/.local/share/nvim/site/pack/packer/start/packer.nvim <<<yes &> /dev/null
+	~/.local/share/nvim/site/pack/packer/start/packer.nvim <<<yes &>/dev/null
 
 # clone setup.env (this file :D! hii!) in my setup folder
-mkdir ~/setup 
-cd ~/setup 
+mkdir ~/setup
+cd ~/setup
 getgist rafael-g-depaulo setup-env.sh
 
 # omzcode
 cd
 sudo apt-get install -y zsh
-CHSH=yes        # update default shell
-KEEP_ZSHRC=yes  # don't override our .zshrc
-RUNZSH=yes      # run zsh
+CHSH=yes       # update default shell
+KEEP_ZSHRC=yes # don't override our .zshrc
+RUNZSH=yes     # run zsh
 yes | sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" -y
 getgist rafael-g-depaulo .zshrc -y
 # oh-my-zsh plugins
@@ -195,4 +197,3 @@ zsh
 # TODO: auto setup fonts (https://www.nerdfonts.com/font-downloads)
 # TODO: set this up as a github repo and separate files
 # TODO: make this interactive
-
