@@ -100,4 +100,5 @@ git clone --depth 1 https://github.com/wbthomason/packer.nvim \
 
 # tmux/tmuxinator
 sudo apt install -y tmux
-sudo gem install tmuxinator
+sudo apt install -y tmuxinator
+# sudo gem install tmuxinator
