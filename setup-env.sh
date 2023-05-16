@@ -124,9 +124,7 @@ cd
 # # git config --global core.editor "${VSCODE_EDITOR:-code} --wait"
 
 # python basics
-sudo apt-get install -y python-is-python3 pip
-
-pip install Pygments # colorize code and stuff
+sudo apt-get install -y python-is-python3 pip python-pygments # colorize code and stuff
 
 # autojump
 sudo apt-get install autojump -y
