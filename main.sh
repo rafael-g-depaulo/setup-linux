@@ -1,14 +1,12 @@
 #!/bin/bash
 
-# TODO: add rvm/ruby/tmuxinator to tools.sh
-
 SETUP_BASE="$(pwd)"
 run_script() {
-  local SCRIPT_NAME="$1"
-  local SCRIPTS_FOLDER="$SETUP_BASE/scripts"
+	local SCRIPT_NAME="$1"
+	local SCRIPTS_FOLDER="$SETUP_BASE/scripts"
 
-  # run script
-  sudo "$SCRIPTS_FOLDER/$SCRIPT_NAME"
+	# run script
+	sudo "$SCRIPTS_FOLDER/$SCRIPT_NAME"
 }
 
 # PATH CHANGES
@@ -35,16 +33,15 @@ run_script "tools.sh"
 
 # setup terminal emulator
 if [ $VAR_HAS_GUI = "true" ]; then
-  run_script "gui_stuff.sh"
-  run_script "setup_fonts.sh"
+	run_script "gui_stuff.sh"
+	run_script "setup_fonts.sh"
 
-  if [ $VAR_INSTALL_HYPER = "true" ]; then
-    run_script "terminal.sh"
-  fi
+	if [ $VAR_INSTALL_HYPER = "true" ]; then
+		run_script "terminal.sh"
+	fi
 fi
 
 # install zsh and oh-my-zsh
 if [ $VAR_INSTALL_ZSH = "true" ]; then
-  run_script "zsh.sh"
+	run_script "zsh.sh"
 fi
-
