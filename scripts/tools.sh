@@ -44,6 +44,9 @@ sudo systemctl enable postgresql
 #  CREATE DATABASE \"plural\";
 # "
 
+# deps for random stuff
+sudo apt-get install ripgrep # apparently needed for telescope to work in nvim
+
 # docker & docker compose
 # sudo apt-get install -y curl gnup ca-certificate lsb-release
 ### Download the docker gpg file to Ubuntu
